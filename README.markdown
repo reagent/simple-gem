@@ -1,0 +1,1 @@
+Generating gems is fun. Doing it with hoe / newgem / bones / etc... is a pain in (my) ass
