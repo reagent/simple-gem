@@ -1,3 +1,5 @@
+require 'erb'
+
 module SimpleGem
   class Gem
     
@@ -19,11 +21,38 @@ module SimpleGem
     def ruby_name
       transform_name('_') {|part| part.downcase }
     end
+
+    def generate
+      generate_root_directory
+      generate_subdirectories
+      generate_file('lib.rb.erb', "lib/#{self.ruby_name}.rb")
+      generate_file('lib_version.rb.erb', "lib/#{self.ruby_name}/version.rb")
+      generate_file('Rakefile.erb', 'Rakefile')
+      generate_file('README.markdown.erb', 'README.markdown')
+      generate_file('test.rb.erb', "test/#{self.ruby_name}_test.rb")
+    end
     
     private
     def transform_name(glue = nil, &block)
-      # pattern = /_/
       self.name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
+    end
+    
+    def generate_root_directory
+      FileUtils.mkdir("#{self.root_path}/#{self.name}")
+    end
+    
+    def generate_subdirectories
+      ['lib', 'test', "lib/#{self.ruby_name}"].each do |dir|
+        FileUtils.mkdir("#{self.root_path}/#{self.name}/#{dir}")
+      end
+    end
+    
+    def generate_file(source, output)
+      source_file = File.dirname(__FILE__) + "/../../templates/#{source}"
+      output_file = "#{self.root_path}/#{self.name}/#{output}"
+      
+      erb = ERB.new(File.read(source_file))
+      File.open(output_file, 'w') {|f| f << erb.result(binding) }
     end
     
   end

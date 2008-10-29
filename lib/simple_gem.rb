@@ -1,13 +1,2 @@
-module SimpleGem
-  module Version
-    
-    MAJOR = 0
-    MINOR = 1
-    TINY  = 0
-    
-    def self.to_s
-      [MAJOR, MINOR, TINY].join('.')
-    end
-    
-  end
-end
+require 'simple_gem/version'
+require 'simple_gem/gem'

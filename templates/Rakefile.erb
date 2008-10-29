@@ -2,21 +2,20 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rake/testtask'
 
-require 'lib/simple_gem/version'
+require 'lib/<%= self.ruby_name %>/version'
 
 task :default => :test
 
 spec = Gem::Specification.new do |s|
-  s.name             = 'simple-gem'
-  s.version          = SimpleGem::Version.to_s
+  s.name             = '<%= self.name %>'
+  s.version          = <%= self.module_name %>::Version.to_s
   s.has_rdoc         = true
   s.extra_rdoc_files = %w(README.markdown)
-  s.summary          = "A simple start point for creating gems"
-  s.author           = 'Patrick Reagan'
-  s.email            = 'reaganpr@gmail.com'
-  s.homepage         = 'http://sneaq.net'
-  s.executables      = ['simple-gem']
-  s.files            = %w(README.markdown Rakefile) + Dir.glob("{lib,test,templates}/**/*")
+  s.summary          = "This gem does ... "
+  s.author           = 'First Last'
+  s.email            = 'user@example.com'
+  s.homepage         = 'http://my-site.net'
+  s.files            = %w(README.markdown Rakefile) + Dir.glob("{lib,test}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|

@@ -1,1 +1,10 @@
 #!/usr/bin/env ruby
+
+require 'simple_gem/gem'
+
+if ARGV[0]
+  gem = SimpleGem::Gem.new(`pwd`.strip, ARGV[0])
+  gem.generate
+else
+  puts "Please specify a name for your gem"
+end
