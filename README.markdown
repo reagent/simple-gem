@@ -6,8 +6,17 @@ Creating RubyGems is fun work, but dealing with the complexity of hoe / bones / 
 
 ## Installation
 
-    sudo gem install reagent-simple-gem --source=http://gems.github.com
+Ideally:
 
+    sudo gem install reagent-simple-gem --source=http://gems.github.com
+    
+But GitHub doesn't seem to consistently build gems, so use this as a fallback:
+
+    $ git clone git://github.com/reagent/simple-gem.git
+    $ cd simple-gem
+    $ rake gem
+    $ sudo gem install pkg/simple-gem-x.x.x.gem
+    
 ## Usage
 
     $ simple-gem my-gem

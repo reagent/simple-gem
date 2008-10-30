@@ -16,6 +16,9 @@ spec = Gem::Specification.new do |s|
   s.email            = 'user@example.com'
   s.homepage         = 'http://my-site.net'
   s.files            = %w(README.markdown Rakefile) + Dir.glob("{lib,test}/**/*")
+  # s.executables    = ['<%= self.name %>']
+  
+  # s.add_dependency('gem_name', '>=0.0.1')
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
