@@ -25,23 +25,23 @@ module SimpleGem
       end
     end
 
-    should_generate :name        => 'simple_gem', 
+    should_generate :name => 'simple_gem', 
     :module_name => 'SimpleGem', 
     :ruby_name   => 'simple_gem', 
     :from        => 'SimpleGem'
 
 
-    should_generate :name        => 'simple-gem', 
+    should_generate :name => 'simple-gem', 
     :module_name => 'SimpleGem', 
     :ruby_name   => 'simple_gem', 
     :from        => 'simple-gem'
 
-    should_generate :name        => 'simple_gem', 
+    should_generate :name => 'simple_gem', 
     :module_name => 'SimpleGem', 
     :ruby_name   => 'simple_gem', 
     :from        => 'simple_gem'
 
-    should_generate :name        => 'simple_gem', 
+    should_generate :name => 'simple_gem', 
     :module_name => 'SimpleGem', 
     :ruby_name   => 'simple_gem', 
     :from        => 'simpleGem'
