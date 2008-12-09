@@ -29,7 +29,8 @@ module SimpleGem
       generate_file('lib_version.rb.erb', "lib/#{self.ruby_name}/version.rb")
       generate_file('Rakefile.erb', 'Rakefile')
       generate_file('README.markdown.erb', 'README.markdown')
-      generate_file('test.rb.erb', "test/#{self.ruby_name}_test.rb")
+      generate_file('test_helper.rb.erb', 'test/test_helper.rb')
+      generate_file('test.rb.erb', "test/#{self.ruby_name}/#{self.ruby_name}_test.rb")
     end
     
     private
@@ -42,7 +43,7 @@ module SimpleGem
     end
     
     def generate_subdirectories
-      ['lib', 'test', "lib/#{self.ruby_name}"].each do |dir|
+      ['lib', 'test', "lib/#{self.ruby_name}", "test/#{self.ruby_name}"].each do |dir|
         FileUtils.mkdir("#{self.root_path}/#{self.name}/#{dir}")
       end
     end

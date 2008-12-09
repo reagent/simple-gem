@@ -1,9 +1,13 @@
-require 'test/unit'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class <%= self.module_name %>Test < Test::Unit::TestCase
 
-  def test_truth
-    flunk "Please provide some tests"
+  describe "An instance of the <%= self.module_name %> class" do
+
+    it "should flunk" do
+      flunk "Please provide some tests"
+    end
+    
   end
 
 end
