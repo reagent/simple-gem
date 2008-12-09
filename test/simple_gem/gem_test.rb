@@ -71,7 +71,7 @@ module SimpleGem
           File.exist?("#{@tmp_dir}/#{@name}").should == true
         end
 
-        %w(lib test lib/simple_gem test/simple_gem).each do |dir|
+        %w(lib test lib/simple_gem test/unit).each do |dir|
           it "should create the #{dir} subdirectory" do
             File.exist?("#{@tmp_dir}/#{@name}/#{dir}").should == true
           end
@@ -98,7 +98,7 @@ module SimpleGem
         end
 
         it "should generate the test file" do
-          File.exist?("#{@tmp_dir}/#{@name}/test/simple_gem/simple_gem_test.rb").should == true
+          File.exist?("#{@tmp_dir}/#{@name}/test/unit/simple_gem_test.rb").should == true
         end
 
       end
