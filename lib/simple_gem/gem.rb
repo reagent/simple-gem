@@ -28,7 +28,7 @@ module SimpleGem
       generate_file('lib.rb.erb', "lib/#{self.ruby_name}.rb")
       generate_file('lib_version.rb.erb', "lib/#{self.ruby_name}/version.rb")
       generate_file('Rakefile.erb', 'Rakefile')
-      generate_file('README.markdown.erb', 'README.markdown')
+      generate_file('README.rdoc.erb', 'README.rdoc')
       generate_file('test_helper.rb.erb', 'test/test_helper.rb')
       generate_file('test.rb.erb', "test/unit/#{self.ruby_name}_test.rb")
     end

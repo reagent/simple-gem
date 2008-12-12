@@ -5,7 +5,7 @@ module <%= self.module_name %>
     MINOR = 1
     TINY  = 0
     
-    def self.to_s
+    def self.to_s # :nodoc:
       [MAJOR, MINOR, TINY].join('.')
     end
     

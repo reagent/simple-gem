@@ -90,7 +90,7 @@ module SimpleGem
         end
 
         it "should create the README file" do
-          File.exist?("#{@tmp_dir}/#{@name}/README.markdown").should == true
+          File.exist?("#{@tmp_dir}/#{@name}/README.rdoc").should == true
         end
 
         it "should generate the test helper file" do
