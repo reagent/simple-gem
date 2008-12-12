@@ -23,7 +23,7 @@ But GitHub doesn't seem to consistently build gems, so use this as a fallback:
     
 This will create a gem structure under the 'my-gem' directory.  The command is pretty forgiving with the name you supply, it will automatically transform anything that is camelcased into something more ruby-like.
 
-After generating your gem, go ahead and add information about your gem to both the <tt>Rakefile</tt> and <tt>README.markdown</tt> files.  The default version number is "0.1.0", but if you want to change that, take a look at <tt>lib/my_gem/version.rb</tt> to make the change - this will automatically be picked up when you rebuild your gem.
+After generating your gem, go ahead and add information about your gem to both the <tt>Rakefile</tt> and <tt>README.rdoc</tt> files.  The default version number is "0.1.0", but if you want to change that, take a look at <tt>lib/my_gem/version.rb</tt> to make the change - this will automatically be picked up when you rebuild your gem.
 
 Your new gem provides some Rake tasks for convenience:
 
