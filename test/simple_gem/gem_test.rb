@@ -101,6 +101,10 @@ module SimpleGem
         it "should generate the test file" do
           File.exist?("#{@tmp_dir}/#{@name}/test/unit/simple_gem_test.rb").should == true
         end
+        
+        it "should generate the .gitignore file" do
+          File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
+        end
 
       end
 
