@@ -2,16 +2,16 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simple-gem}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Patrick Reagan"]
-  s.date = %q{2008-12-12}
+  s.date = %q{2009-01-05}
   s.default_executable = %q{simple-gem}
   s.email = %q{reaganpr@gmail.com}
   s.executables = ["simple-gem"]
   s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["README.rdoc", "Rakefile", "lib/simple_gem", "lib/simple_gem/gem.rb", "lib/simple_gem/version.rb", "lib/simple_gem.rb", "test/simple_gem", "test/simple_gem/gem_test.rb", "templates/lib.rb.erb", "templates/lib_version.rb.erb", "templates/Rakefile.erb", "templates/README.rdoc.erb", "templates/test.rb.erb", "templates/test_helper.rb.erb", "bin/simple-gem"]
+  s.files = ["README.rdoc", "Rakefile", "lib/..", "lib/simple_gem/..", "test/..", "test/simple_gem/..", "templates/..", "templates/.gitignore.erb", "bin/simple-gem"]
   s.has_rdoc = true
   s.homepage = %q{http://sneaq.net}
   s.rdoc_options = ["--main", "README.rdoc"]
