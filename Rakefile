@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.email            = 'reaganpr@gmail.com'
   s.homepage         = 'http://sneaq.net'
   s.executables      = ['simple-gem']
-  s.files            = %w(README.rdoc Rakefile) + Dir.glob("{lib,test,templates}/**/.?*")
+  s.files            = %w(README.rdoc Rakefile) + Dir.glob("{lib,test,templates}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
