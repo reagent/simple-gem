@@ -8,7 +8,8 @@ module SimpleGem
   class GemTest < Test::Unit::TestCase
 
     def self.should_generate(expectations)
-      describe "An instance of Gem when given a #{expectations[:from]} name" do
+      name = expectations[:from].sub(/\W/, '')
+      describe "An instance of Gem when given the name: #{name} name" do
         before do
           path = '/this/path'
           @name = expectations[:from]
