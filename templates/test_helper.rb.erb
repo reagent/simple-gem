@@ -2,9 +2,6 @@
 $:.reject! { |e| e.include? 'TextMate' }
 
 require 'rubygems'
-require 'test/unit'
-require 'matchy'
-require 'context'
-require 'mocha'
+require 'throat_punch'
 
 require File.dirname(__FILE__) + '/../lib/<%= self.ruby_name %>'
