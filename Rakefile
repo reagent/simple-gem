@@ -30,9 +30,11 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-desc 'Generate the gemspec to serve this Gem from Github'
-task :github do
+desc 'Generate the gemspec for the Gem (useful when serving from Github)'
+task :gemspec do
   file = File.dirname(__FILE__) + "/#{spec.name}.gemspec"
   File.open(file, 'w') {|f| f << spec.to_ruby }
   puts "Created gemspec: #{file}"
 end
+
+task :github => :gemspec
