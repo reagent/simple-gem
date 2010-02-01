@@ -2,8 +2,8 @@ module SimpleGem
   module Version
     
     MAJOR = 0
-    MINOR = 4
-    TINY  = 2
+    MINOR = 5
+    TINY  = 0
     
     def self.to_s
       [MAJOR, MINOR, TINY].join('.')
