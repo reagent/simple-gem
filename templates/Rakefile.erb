@@ -43,15 +43,6 @@ begin
   task :default => :coverage
   
 rescue LoadError
-  warn "\n**** Install rcov (sudo gem install relevance-rcov) to get coverage stats ****\n"
+  warn "\n**** Install rcov (gem install rcov) to get coverage stats ****\n"
   task :default => :test
 end
-
-desc 'Generate the gemspec for the Gem (useful when serving from Github)'
-task :gemspec do
-  file = File.dirname(__FILE__) + "/#{spec.name}.gemspec"
-  File.open(file, 'w') {|f| f << spec.to_ruby }
-  puts "Created gemspec: #{file}"
-end
-
-task :github => :gemspec

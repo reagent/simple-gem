@@ -6,17 +6,8 @@ Creating RubyGems is fun work, but dealing with the complexity of hoe / bones / 
 
 == Installation
 
-Ideally:
-
-    sudo gem install reagent-simple-gem --source=http://gems.github.com
-    
-But GitHub doesn't seem to consistently build gems, so use this as a fallback:
-
-    $ git clone git://github.com/reagent/simple-gem.git
-    $ cd simple-gem
-    $ rake gem
-    $ sudo gem install pkg/simple-gem-x.x.x.gem
-    
+    $ sudo gem install simple-gem
+        
 == Usage
 
     $ simple-gem my-gem
@@ -29,7 +20,7 @@ Your new gem provides some Rake tasks for convenience:
 
 * <tt>rake gem</tt> - Build the gem and drop it into the <tt>pkg/</tt> directory for installation.
 * <tt>rake test</tt> - The default test task, it will run the tests in <tt>test</tt>. If this is a newly-created gem, your tests will flunk.
-* <tt>rake github</tt> - Generate <tt>my_gem.gemspec</tt> file to use if you're serving your gem from GitHub (requires flagging your GitHub project as a rubygem).
+* <tt>rake coverage</tt> - If RCov is installed on your system, this will run all tests and report coverage.  This replaces the default test task.
 
 That's it. Enjoy.
 
