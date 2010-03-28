@@ -1,16 +1,17 @@
 require 'rubygems'
-require 'context'
+require 'test/unit'
+require 'shoulda'
 require 'matchy'
 
-require File.dirname(__FILE__) + '/../../lib/simple_gem/gem'
+require File.dirname(__FILE__) + '/../../lib/simple_gem'
 
 module SimpleGem
   class GemTest < Test::Unit::TestCase
 
     def self.should_generate(expectations)
       name = expectations[:from].sub(/\W/, '')
-      describe "An instance of Gem when given the name: #{name} name" do
-        before do
+      context "An instance of Gem when given the name: #{name} name" do
+        setup do
           path = '/this/path'
           @name = expectations[:from]
           @gem = Gem.new(path, @name)
@@ -18,7 +19,7 @@ module SimpleGem
 
         expectations.each do |k,v|
           unless k == :from
-            it "should know its #{k}" do
+            should "know its #{k}" do
               @gem.send(k).should == v
             end
           end
@@ -47,16 +48,16 @@ module SimpleGem
     :ruby_name   => 'simple_gem', 
     :from        => 'simpleGem'
 
-    describe "An instance of Gem" do
-      before { @path = '/this/path' }
+    context "An instance of the Gem class" do
+      setup { @path = '/this/path' }
 
-      it "should know its root path" do
+      should " know its root path" do
         Gem.new(@path, 'name').root_path.should == @path
       end
 
       context "when generating the directory structure" do
 
-        before do
+        setup do
           @tmp_dir = File.dirname(__FILE__) + '/../../tmp'
           FileUtils.mkdir(@tmp_dir) unless File.exist?(@tmp_dir)
 
@@ -64,45 +65,45 @@ module SimpleGem
           Gem.new(@tmp_dir, @name).generate
         end
 
-        after do
+        teardown do
           FileUtils.rm_rf(@tmp_dir)
         end
 
-        it "should be able to make the root directory" do
+        should "be able to make the root directory" do
           File.exist?("#{@tmp_dir}/#{@name}").should == true
         end
 
         %w(lib test lib/simple_gem test/unit).each do |dir|
-          it "should create the #{dir} subdirectory" do
+          should "create the #{dir} subdirectory" do
             File.exist?("#{@tmp_dir}/#{@name}/#{dir}").should == true
           end
         end
 
-        it "should create the main library file" do
+        should "create the main library file" do
           File.exist?("#{@tmp_dir}/#{@name}/lib/simple_gem.rb").should == true
         end
         
-        it "should create the version file" do
+        should "create the version file" do
           File.exist?("#{@tmp_dir}/#{@name}/lib/simple_gem/version.rb").should == true
         end
 
-        it "should create the main Rakefile" do
+        should "create the main Rakefile" do
           File.exist?("#{@tmp_dir}/#{@name}/Rakefile").should == true
         end
 
-        it "should create the README file" do
+        should "create the README file" do
           File.exist?("#{@tmp_dir}/#{@name}/README.rdoc").should == true
         end
 
-        it "should generate the test helper file" do
+        should "generate the test helper file" do
           File.exist?("#{@tmp_dir}/#{@name}/test/test_helper.rb").should == true
         end
 
-        it "should generate the test file" do
+        should "generate the test file" do
           File.exist?("#{@tmp_dir}/#{@name}/test/unit/simple_gem_test.rb").should == true
         end
         
-        it "should generate the .gitignore file" do
+        should "generate the .gitignore file" do
           File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
         end
 
