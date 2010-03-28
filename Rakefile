@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rake/testtask'
 
-require 'lib/simple_gem/version'
+require File.join(File.dirname(__FILE__), %w(lib simple_gem version))
 
 task :default => :test
 

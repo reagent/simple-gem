@@ -3,7 +3,7 @@ require 'test/unit'
 require 'shoulda'
 require 'matchy'
 
-require File.dirname(__FILE__) + '/../../lib/simple_gem'
+require File.expand_path(File.join(File.dirname(__FILE__), %w(.. .. lib simple_gem)))
 
 module SimpleGem
   class GemTest < Test::Unit::TestCase

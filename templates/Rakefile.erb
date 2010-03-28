@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rake/testtask'
 
-require 'lib/<%= self.ruby_name %>/version'
+require File.join(File.dirname(__FILE__), %w(lib <%= self.ruby_name %> version))
 
 spec = Gem::Specification.new do |s|
   s.name             = '<%= self.name %>'
