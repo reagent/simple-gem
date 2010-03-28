@@ -33,11 +33,16 @@ end
 begin
   require 'rcov/rcovtask'
 
+  exclude_paths  = %w(/Library/Ruby /usr/lib/ruby)
+  exclude_paths += Array(Gem.path)
+
+  options = ['--text-report'] + exclude_paths.map {|p| "-x '#{p}'" }
+
   Rcov::RcovTask.new(:coverage) do |t|
     t.libs       = ['test']
     t.test_files = FileList["test/**/*_test.rb"]
     t.verbose    = true
-    t.rcov_opts  = ['--text-report', "-x #{Gem.path}", '-x /Library/Ruby', '-x /usr/lib/ruby']
+    t.rcov_opts  = options
   end
   
   task :default => :coverage
