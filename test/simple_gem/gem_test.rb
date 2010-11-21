@@ -27,25 +27,25 @@ module SimpleGem
       end
     end
 
-    should_generate :name => 'simple_gem', 
-    :module_name => 'SimpleGem', 
-    :ruby_name   => 'simple_gem', 
+    should_generate :name => 'simple_gem',
+    :module_name => 'SimpleGem',
+    :ruby_name   => 'simple_gem',
     :from        => 'SimpleGem'
 
 
-    should_generate :name => 'simple-gem', 
-    :module_name => 'SimpleGem', 
-    :ruby_name   => 'simple_gem', 
+    should_generate :name => 'simple-gem',
+    :module_name => 'SimpleGem',
+    :ruby_name   => 'simple_gem',
     :from        => 'simple-gem'
 
-    should_generate :name => 'simple_gem', 
-    :module_name => 'SimpleGem', 
-    :ruby_name   => 'simple_gem', 
+    should_generate :name => 'simple_gem',
+    :module_name => 'SimpleGem',
+    :ruby_name   => 'simple_gem',
     :from        => 'simple_gem'
 
-    should_generate :name => 'simple_gem', 
-    :module_name => 'SimpleGem', 
-    :ruby_name   => 'simple_gem', 
+    should_generate :name => 'simple_gem',
+    :module_name => 'SimpleGem',
+    :ruby_name   => 'simple_gem',
     :from        => 'simpleGem'
 
     context "An instance of the Gem class" do
@@ -82,7 +82,7 @@ module SimpleGem
         should "create the main library file" do
           File.exist?("#{@tmp_dir}/#{@name}/lib/simple_gem.rb").should == true
         end
-        
+
         should "create the version file" do
           File.exist?("#{@tmp_dir}/#{@name}/lib/simple_gem/version.rb").should == true
         end
@@ -95,6 +95,10 @@ module SimpleGem
           File.exist?("#{@tmp_dir}/#{@name}/README.rdoc").should == true
         end
 
+        should "create the Gemfile" do
+          File.exist?("#{@tmp_dir}/#{@name}/Gemfile").should == true
+        end
+
         should "generate the test helper file" do
           File.exist?("#{@tmp_dir}/#{@name}/test/test_helper.rb").should == true
         end
@@ -102,7 +106,7 @@ module SimpleGem
         should "generate the test file" do
           File.exist?("#{@tmp_dir}/#{@name}/test/unit/simple_gem_test.rb").should == true
         end
-        
+
         should "generate the .gitignore file" do
           File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
         end
