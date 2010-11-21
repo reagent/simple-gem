@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    simple-gem (0.5.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    jnunemaker-matchy (0.4.0)
+    mocha (0.9.9)
+      rake
+    rake (0.8.7)
+    shoulda (2.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.0.0)
+  jnunemaker-matchy (~> 0.4.0)
+  mocha (~> 0.9.0)
+  shoulda (~> 2.11.0)
+  simple-gem!
