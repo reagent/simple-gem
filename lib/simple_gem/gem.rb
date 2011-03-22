@@ -1,15 +1,15 @@
 module SimpleGem
   class Gem
 
-    attr_reader :root_path, :name
+    attr_reader :root_path
 
     def initialize(path, name)
       @root_path = path
-      self.name = name
+      @name      = name
     end
 
-    def name=(name)
-      @name = name.gsub(/([A-Z])([a-z])/, '_\1\2').sub(/^_/, '').downcase
+    def name
+      sanitized_name
     end
 
     def module_name
@@ -39,6 +39,10 @@ module SimpleGem
     end
 
     private
+
+    def sanitized_name
+      @name.gsub(/([A-Z])([a-z])/, '_\1\2').sub(/^_/, '').downcase
+    end
 
     def transform_name(glue = nil, &block)
       name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
