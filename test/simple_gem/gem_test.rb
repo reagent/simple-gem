@@ -49,25 +49,21 @@ module SimpleGem
     :from        => 'simpleGem'
 
     context "An instance of the Gem class" do
-      setup { @path = '/this/path' }
+      setup do
+        @tmp_dir = File.expand_path('../../../tmp', __FILE__)
+        FileUtils.mkdir(@tmp_dir) unless File.exist?(@tmp_dir)
 
-      should " know its root path" do
-        Gem.new(@path, 'name').root_path.should == @path
+        @name = 'simple-gem'
+        @gem  = Gem.new(@tmp_dir, @name)
+      end
+
+      should "know its root path" do
+        @gem.root_path.should == @tmp_dir
       end
 
       context "when generating the directory structure" do
-
-        setup do
-          @tmp_dir = File.dirname(__FILE__) + '/../../tmp'
-          FileUtils.mkdir(@tmp_dir) unless File.exist?(@tmp_dir)
-
-          @name = 'simple-gem'
-          Gem.new(@tmp_dir, @name).generate
-        end
-
-        teardown do
-          FileUtils.rm_rf(@tmp_dir)
-        end
+        setup    { @gem.generate_structure }
+        teardown { FileUtils.rm_rf(@tmp_dir) }
 
         should "be able to make the root directory" do
           File.exist?("#{@tmp_dir}/#{@name}").should == true
@@ -111,7 +107,8 @@ module SimpleGem
           File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
         end
 
-        should "generate the gemspec" do
+        should "be able to generate the gemspec" do
+          @gem.generate_gemspec
           File.exist?("#{@tmp_dir}/#{@name}/simple-gem.gemspec").should == true
         end
       end

@@ -4,7 +4,10 @@ require 'simple_gem'
 
 if ARGV[0]
   gem = SimpleGem::Gem.new(`pwd`.strip, ARGV[0])
-  gem.generate
+  gem.generate_structure
+  gem.generate_gemspec
+
+  $stderr.puts "Generated new gem structure for #{gem.name}"
 else
   puts "Please specify a name for your gem"
 end

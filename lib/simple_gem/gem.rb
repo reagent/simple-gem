@@ -20,7 +20,7 @@ module SimpleGem
       transform_name('_') {|part| part.downcase }
     end
 
-    def generate
+    def generate_structure
       generate_root_directory
       generate_subdirectories
       generate_file('gitignore.erb', '.gitignore')
@@ -31,7 +31,12 @@ module SimpleGem
       generate_file('README.rdoc.erb', 'README.rdoc')
       generate_file('test_helper.rb.erb', 'test/test_helper.rb')
       generate_file('test.rb.erb', "test/unit/#{self.ruby_name}_test.rb")
-      generate_gemspec
+    end
+
+    def generate_gemspec
+      Dir.chdir("#{self.root_path}/#{self.name}") do
+        `rake gemspec 2>&1`
+      end
     end
 
     private
@@ -56,12 +61,6 @@ module SimpleGem
 
       erb = ERB.new(File.read(source_file))
       File.open(output_file, 'w') {|f| f << erb.result(binding) }
-    end
-
-    def generate_gemspec
-      Dir.chdir("#{self.root_path}/#{self.name}") do
-        `rake gemspec 2>&1`
-      end
     end
 
   end
