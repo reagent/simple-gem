@@ -21,7 +21,7 @@ module SimpleGem
     end
 
     def generate_structure
-      generate_root_directory
+      generate_gem_directory
       generate_subdirectories
       generate_file('gitignore.erb', '.gitignore')
       generate_file('lib.rb.erb', "lib/#{self.ruby_name}.rb")
@@ -34,9 +34,7 @@ module SimpleGem
     end
 
     def generate_gemspec
-      Dir.chdir("#{self.root_path}/#{self.name}") do
-        `rake gemspec 2>&1`
-      end
+      Dir.chdir(gem_path) { `rake gemspec 2>&1` }
     end
 
     private
@@ -45,22 +43,29 @@ module SimpleGem
       self.name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
     end
 
-    def generate_root_directory
-      FileUtils.mkdir("#{self.root_path}/#{self.name}")
+    def generate_gem_directory
+      FileUtils.mkdir(gem_path)
     end
 
     def generate_subdirectories
       ['lib', 'test', "lib/#{self.ruby_name}", 'test/unit'].each do |dir|
-        FileUtils.mkdir("#{self.root_path}/#{self.name}/#{dir}")
+        FileUtils.mkdir(path_to(dir))
       end
     end
 
     def generate_file(source, output)
-      source_file = File.dirname(__FILE__) + "/../../templates/#{source}"
-      output_file = "#{self.root_path}/#{self.name}/#{output}"
+      source_file = File.expand_path("../../../templates/#{source}", __FILE__)
 
       erb = ERB.new(File.read(source_file))
-      File.open(output_file, 'w') {|f| f << erb.result(binding) }
+      File.open(path_to(output), 'w') {|f| f << erb.result(binding) }
+    end
+
+    def gem_path
+      "#{root_path}/#{name}"
+    end
+
+    def path_to(target)
+      "#{gem_path}/#{target}"
     end
 
   end
