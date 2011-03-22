@@ -25,13 +25,13 @@ module SimpleGem
       generate_subdirectories
       generate_file('gitignore.erb', '.gitignore')
       generate_file('rvmrc.erb', '.rvmrc')
-      generate_file('lib.rb.erb', "lib/#{self.ruby_name}.rb")
-      generate_file('lib_version.rb.erb', "lib/#{self.ruby_name}/version.rb")
+      generate_file('lib.rb.erb', "lib/#{ruby_name}.rb")
+      generate_file('lib_version.rb.erb', "lib/#{ruby_name}/version.rb")
       generate_file('Rakefile.erb', 'Rakefile')
       generate_file('Gemfile.erb', 'Gemfile')
       generate_file('README.rdoc.erb', 'README.rdoc')
       generate_file('test_helper.rb.erb', 'test/test_helper.rb')
-      generate_file('test.rb.erb', "test/unit/#{self.ruby_name}_test.rb")
+      generate_file('test.rb.erb', "test/unit/#{ruby_name}_test.rb")
     end
 
     def generate_gemspec
@@ -41,7 +41,7 @@ module SimpleGem
     private
 
     def transform_name(glue = nil, &block)
-      self.name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
+      name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
     end
 
     def generate_gem_directory
@@ -49,7 +49,7 @@ module SimpleGem
     end
 
     def generate_subdirectories
-      ['lib', 'test', "lib/#{self.ruby_name}", 'test/unit'].each do |dir|
+      ['lib', 'test', "lib/#{ruby_name}", 'test/unit'].each do |dir|
         FileUtils.mkdir(path_to(dir))
       end
     end

@@ -1,13 +1,13 @@
 require File.expand_path(File.join(File.dirname(__FILE__), %w(.. test_helper)))
 
-class <%= self.module_name %>Test < Test::Unit::TestCase
+class <%= module_name %>Test < Test::Unit::TestCase
 
-  context "An instance of the <%= self.module_name %> class" do
+  context "An instance of the <%= module_name %> class" do
 
     should "flunk" do
       flunk "Please provide some tests"
     end
-    
+
   end
 
 end
