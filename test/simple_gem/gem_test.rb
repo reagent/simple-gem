@@ -107,6 +107,10 @@ module SimpleGem
           File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
         end
 
+        should "generate the .rvmrc file" do
+          File.exist?("#{@tmp_dir}/#{@name}/.rvmrc").should == true
+        end
+
         should "be able to generate the gemspec" do
           @gem.generate_gemspec
           File.exist?("#{@tmp_dir}/#{@name}/simple-gem.gemspec").should == true

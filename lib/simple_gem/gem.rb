@@ -24,6 +24,7 @@ module SimpleGem
       generate_gem_directory
       generate_subdirectories
       generate_file('gitignore.erb', '.gitignore')
+      generate_file('rvmrc.erb', '.rvmrc')
       generate_file('lib.rb.erb', "lib/#{self.ruby_name}.rb")
       generate_file('lib_version.rb.erb', "lib/#{self.ruby_name}/version.rb")
       generate_file('Rakefile.erb', 'Rakefile')
