@@ -31,9 +31,11 @@ module SimpleGem
       generate_file('README.rdoc.erb', 'README.rdoc')
       generate_file('test_helper.rb.erb', 'test/test_helper.rb')
       generate_file('test.rb.erb', "test/unit/#{self.ruby_name}_test.rb")
+      generate_gemspec
     end
 
     private
+
     def transform_name(glue = nil, &block)
       self.name.split(/[_-]/).map {|part| block.call(part) }.join(glue)
     end
@@ -54,6 +56,12 @@ module SimpleGem
 
       erb = ERB.new(File.read(source_file))
       File.open(output_file, 'w') {|f| f << erb.result(binding) }
+    end
+
+    def generate_gemspec
+      Dir.chdir("#{self.root_path}/#{self.name}") do
+        `rake gemspec 2>&1`
+      end
     end
 
   end

@@ -111,6 +111,9 @@ module SimpleGem
           File.exist?("#{@tmp_dir}/#{@name}/.gitignore").should == true
         end
 
+        should "generate the gemspec" do
+          File.exist?("#{@tmp_dir}/#{@name}/simple-gem.gemspec").should == true
+        end
       end
 
     end
