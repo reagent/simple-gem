@@ -42,3 +42,8 @@ task :gemspec do
   File.open(file, 'w') {|f| f << spec.to_ruby }
   puts "Created gemspec: #{file}"
 end
+
+desc 'loads a console with lib/simple_gem.rb'
+task :console do
+  exec("irb -Ilib -rsimple_gem")
+end

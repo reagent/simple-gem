@@ -21,6 +21,7 @@ Your new gem provides some Rake tasks for convenience:
 * <tt>rake gem</tt> - Build the gem and drop it into the <tt>pkg/</tt> directory for installation.
 * <tt>rake test</tt> - The default test task, it will run the tests in <tt>test</tt>. If this is a newly-created gem, your tests will flunk.
 * <tt>rake coverage</tt> - If RCov is installed on your system, this will run all tests and report coverage.  This replaces the default test task.
+* <tt>rake console</tt> - Loads a console with lib/gem_name. Useful for debugging.
 
 That's it. Enjoy.
 

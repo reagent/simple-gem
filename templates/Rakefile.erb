@@ -64,3 +64,8 @@ task :gemspec do
   File.open(file, 'w') {|f| f << spec.to_ruby }
   puts "Created gemspec: #{file}"
 end
+
+desc 'Loads a console with lib/<%= ruby_name %>'
+task :console do
+  exec("irb -Ilib -r<%= ruby_name %>")
+end
