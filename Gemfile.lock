@@ -9,7 +9,7 @@ GEM
     jnunemaker-matchy (0.4.0)
     mocha (0.9.9)
       rake
-    rake (0.8.7)
+    rake (13.0.1)
     shoulda (2.11.3)
 
 PLATFORMS
